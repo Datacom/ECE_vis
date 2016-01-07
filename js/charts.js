@@ -50,14 +50,12 @@ function cleanup(d) {
 
 queue()
     .defer(d3.csv,  "data/Enrolments in ECE by region.csv")
-    .defer(d3.csv,  "dictionaries/NMS_authority_dict.csv")
     .defer(d3.csv,  "dictionaries/Region_dict.csv")
     .defer(d3.csv,  "dictionaries/titles.csv")
-    .defer(d3.json, "gis/council_boundaries.singlepart.simp100.WGS84.geojson")
     .defer(d3.json, "gis/region_boundaries_singlepart_simp_p001.geojson")
     .await(showCharts);
 
-function showCharts(err, data, auth_dict, region_dict, title_text, council_bounds, region_bounds) {
+function showCharts(err, data, region_dict, title_text, region_bounds) {
 
 //We use dictionary .csv's to store things we might want to map our data to, such as codes to names, names to abbreviations etc.
   
@@ -71,14 +69,6 @@ function showCharts(err, data, auth_dict, region_dict, title_text, council_bound
         name = entry.id
         _title_text[name]=entry;     
   }
-  
-  for (i in auth_dict) {
-    entry = auth_dict[i]
-    trimAll(entry)
-    name = entry.Name
-    councilNames.push(name);
-    _auth_dict[entry.Name]=entry;
-  } 
 
     for (i in region_dict) {
     entry = region_dict[i]
@@ -91,7 +81,7 @@ function showCharts(err, data, auth_dict, region_dict, title_text, council_bound
     cleanup(data[i]);
   }
   //_data = data;
-  _council_bounds = council_bounds;
+ 
   _region_bounds = region_bounds;    
 
 //------------Puts legends and titles on the chart divs and the entire page---------------   
