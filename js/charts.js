@@ -127,7 +127,7 @@ function showCharts(err, data, region_dict, title_text, region_bounds) {
     .title(function(d){return d.key+': '+title_integer_format(d.value)})
 
   ethnicity_chart.xAxis().ticks(4).tickFormat(integer_format)
-  ethnicity_chart.on('pretransition.dim', dim_zero_rows)
+  ethnicity_chart.on('pretransition.dim', grey_zero)
   
   age = ndx.dimension(function(d) {return d.age});
   age_group = age.group().reduceSum(function(d){return d.count});
@@ -145,7 +145,7 @@ function showCharts(err, data, region_dict, title_text, region_bounds) {
     
 
   age_chart.xAxis().ticks(4).tickFormat(integer_format);
-  age_chart.on('pretransition.dim', dim_zero_rows) 
+  age_chart.on('pretransition.dim',grey_zero) 
   
   service = ndx.dimension(function(d) {return d.service});
   service_group = service.group().reduceSum(function(d){return d.count});
@@ -163,7 +163,7 @@ function showCharts(err, data, region_dict, title_text, region_bounds) {
     
 
   service_chart.xAxis().ticks(4).tickFormat(integer_format);
-  service_chart.on('pretransition.dim', dim_zero_rows) 
+  service_chart.on('pretransition.dim', grey_zero) 
   
   
 ////----------------------------Map functions----------------------------------
@@ -198,8 +198,6 @@ function showCharts(err, data, region_dict, title_text, region_bounds) {
   }
 
   map_width = d3.select("#region_map").select('legend').node().getBoundingClientRect().width
-
-  console.log(map_width)
 
   region_map = dc.geoChoroplethChart("#region_map")
       .dimension(region)

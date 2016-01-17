@@ -1,5 +1,6 @@
 <html>
   <head>
+    <title>Early Childhood Education</title>
     <link href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.css' rel="stylesheet" type="text/css"/>
     <link href='css/dc.css' rel="stylesheet" type="text/css"/>
 
@@ -43,12 +44,12 @@
               <div id="region_map" class="col-sm-12">
                 <legend>
                   <span class = 'pull-right'>
-                    <a href='javascript:region_map.filterAll(); dc.redrawAll()' class='reset' style='display:none;'><i class="fa fa-refresh"></i> </a>
-                    
+                    <i class="fa fa-refresh" style='visibility:hidden;'></i> <!-- was only for pure layout madness reasons -->
+                    <a href='javascript:region_map.filterAll(); dc.redrawAll()' class='reset' style='display:none;'><i class="fa fa-refresh"></i></a>
                     <a id='resetPosition' href='javascript:region_map.projection(projection.scale(1600).translate([220, 320]));
                                                 zoom.scale(1600).translate([220, 320]); 
                                                 hideReset(); 
-                                                dc.redrawAll()' class='hidden'><i class="fa fa-arrows-alt"> </i> </a>
+                                                dc.redrawAll()' class='hidden'><i class="fa fa-arrows-alt"></i> </a>
                   </span>
                 </legend>
               </div> 
